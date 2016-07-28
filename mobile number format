@@ -1,0 +1,86 @@
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+
+int main() {
+    char number[50]={'\0'};
+    char temp[50] = {'\0'};
+    char temp2[50] = {'\0'};
+    char res[50] = {'\0'};
+    int j = 0;
+
+    char t;
+ 
+    int count = 0;
+    int c=0;
+    int cc = 0;
+    
+    int len,len2;
+    
+   
+    for(int i = 0; i <= 50; i++)
+        {
+        scanf("%c", &number[i]);
+    }
+    len = strlen(number);
+    for(int i = 0; i < len; i++)
+        {
+        if((number[i] == '-')||(number[i] == ' ')||((number[i]<=0)&&(number[i]>= 9) )||(number[i] == '+'))
+            {
+            count++;
+            if((number[i] == '+')&&(number[i + 3] == '-'))
+                {
+                i = i + 2;
+            }
+            if((number[i] == '+' )&&(number[i+4] == '-'))
+                {
+                i = i + 3;
+            }
+            continue;
+        }
+        else
+            {
+            temp [j++] = number[i]; 
+        }
+    }
+    
+    
+    len2 = strlen(temp);
+    for(int i = 0; i<= (len-count); i++)
+        {
+        temp2[i] = temp[i];
+    }
+    for(int i = 0; i<= len;i++)
+        {
+        c++;
+        
+       
+            
+            if(c ==4)
+            {
+                if(temp[i-cc] != '\0')
+                    {
+                res[i] = '-';
+                cc++;
+                c = 0;
+                continue;
+                }
+            }
+            else
+            {     
+            
+                res[i] = temp[i- cc];
+            }
+        
+                   
+                
+            }
+    
+    
+        printf("%s", res); 
+
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */    
+    return 0;
+}
+
